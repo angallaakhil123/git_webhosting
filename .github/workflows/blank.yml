@@ -1,0 +1,26 @@
+name: test-inputs
+
+on:
+  push:
+
+jobs:
+  test-context:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Using Context Variables
+        run: |
+          echo "Workflow triggered by ${{ github.actor }}"
+          echo "Repository Name: ${{ github.repository }}"
+          echo "Branch Name: ${{ github.ref_name }}"
+
+      - name: Print GitHub Context
+        run: echo '${{ toJson(github) }}'
+
+      - name: Print Environment Variables
+        run: printenv
+
+      - name: Print Latest Commit ID
+        run: echo "$GITHUB_SHA"
